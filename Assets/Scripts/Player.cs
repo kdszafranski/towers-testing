@@ -7,8 +7,11 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
-        
+        if (other.gameObject.tag == "TowerArrow") {
+            Debug.Log("Been shot by an arrow");
+            Destroy(other.gameObject);
+        }
     }
+
 
 }

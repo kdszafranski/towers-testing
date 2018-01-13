@@ -13,6 +13,10 @@ public class Tower : MonoBehaviour {
     public GameObject cone;
     public GameObject tower;
 
+    public GameObject arrowPrefab;
+
+    GameObject player;
+
     private void FixedUpdate()
     {
         if(playerInRange) {
@@ -25,16 +29,30 @@ public class Tower : MonoBehaviour {
 
     void Fire() {
         Debug.Log("Fire!!");
+        if(player) {
+            // instantiate arrow
+            GameObject arrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            Rigidbody rBody = arrow.GetComponent<Rigidbody>();
+            if(rBody) {
+                Debug.Log("move!");
+                rBody.AddForce(new Vector3(1, 1, 6000));
+            }
+        }
+
         ResetTimer();
     }
 
-    public void StartShooting() {
+    public void StartShooting(GameObject playerObj) {
         // we should shoot immediately!
-        fireTimer = fireRate;
-        playerInRange = true;
+        if(playerObj != null) {
+            player = playerObj;
+            fireTimer = fireRate;
+            playerInRange = true;    
+        }
     }
 
     public void StopShooting() {
+        player = null;
         playerInRange = false;
     }
 

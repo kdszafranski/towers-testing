@@ -309,10 +309,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de3567d8b849437ab4658d2148f7d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 0
-  armor: 0
-  fireRate: 0
-  playerInRange: 0
+  hitPoints: 10
+  armor: 30
+  fireRate: 2
   cone: {fileID: 468979046}
   tower: {fileID: 166669403}
 --- !u!1 &961613735 stripped

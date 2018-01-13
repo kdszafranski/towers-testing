@@ -7,7 +7,8 @@ public class Tower : MonoBehaviour {
     public int hitPoints;
     public int armor;
     public float fireRate;
-    public bool playerInRange;
+    private float fireTimer  = 0;
+    private bool playerInRange;
 
     public GameObject cone;
     public GameObject tower;
@@ -15,10 +16,31 @@ public class Tower : MonoBehaviour {
     private void FixedUpdate()
     {
         if(playerInRange) {
-            Debug.Log("Shoot at player");
+            fireTimer += Time.fixedDeltaTime;
+            if (fireTimer > fireRate) {
+                Fire();
+            }
         }
     }
 
+    void Fire() {
+        Debug.Log("Fire!!");
+        ResetTimer();
+    }
+
+    public void StartShooting() {
+        // we should shoot immediately!
+        fireTimer = fireRate;
+        playerInRange = true;
+    }
+
+    public void StopShooting() {
+        playerInRange = false;
+    }
+
+    void ResetTimer() {
+        fireTimer = 0;
+    }
 
 
 }

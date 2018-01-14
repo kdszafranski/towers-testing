@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerArrow : MonoBehaviour {
 
     Rigidbody rb;
-    public float damageDealt;
+    public float damageDealt = 10f;
 
 	// Use this for initialization
 	void Start () {

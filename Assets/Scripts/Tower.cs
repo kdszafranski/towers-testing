@@ -32,10 +32,13 @@ public class Tower : MonoBehaviour {
         if(player) {
             // instantiate arrow
             GameObject arrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
+            arrow.transform.LookAt(player.transform);
+
             Rigidbody rBody = arrow.GetComponent<Rigidbody>();
             if(rBody) {
                 Debug.Log("move!");
-                rBody.AddForce(new Vector3(1, 1, 6000));
+                rBody.AddForce(new Vector3(arrow.transform.forward.x, 0, arrow.transform.forward.z) * 6000f);
+                //rBody.AddForce();
             }
         }
 

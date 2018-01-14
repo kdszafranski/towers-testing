@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayerMoveController : MonoBehaviour {
 
-    Rigidbody rbody;
+    Rigidbody rBody;
     public float maxVelocity = 30f;
 
 	// Use this for initialization
 	void Start () {
-        rbody = gameObject.GetComponent<Rigidbody>();
+        rBody = gameObject.GetComponent<Rigidbody>();
 	}
 
     // Update is called once per frame
     void FixedUpdate() {
-        if(rbody != null) {
+        if(rBody != null) {
             // -1 to 1, used as a multiplier below
             float vertical = Input.GetAxis("Vertical");
             // control max velocity
-            if(rbody.velocity.magnitude < maxVelocity) {
+            if(rBody.velocity.magnitude < maxVelocity) {
                 // force pushes us forward (whichever direction gameObject is facing)
-                rbody.AddForce(new Vector3(transform.forward.x, 0, transform.forward.z) * 2500f * vertical);    
+                rBody.AddForce(new Vector3(transform.forward.x, 0, transform.forward.z) * 2500f * vertical);    
             }
 
             float horizontal = Input.GetAxis("Horizontal");

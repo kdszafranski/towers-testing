@@ -187,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 175145059}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 1, z: 15}
+  m_LocalScale: {x: 30, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -540,7 +540,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 44.8
+  field of view: 41.2
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -564,13 +564,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1631889564}
-  m_LocalRotation: {x: 0.20233336, y: 0.65492374, z: -0.18841498, w: 0.7033036}
-  m_LocalPosition: {x: -89.72, y: 56.74, z: -6.46}
+  m_LocalRotation: {x: 0.25208697, y: 0.67312276, z: -0.26379392, w: 0.6432501}
+  m_LocalPosition: {x: -89.72, y: 87.29, z: -6.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 32.1, y: 85.92, z: 0}
+  m_LocalEulerAnglesHint: {x: 42.8, y: 92.6, z: 0}
 --- !u!114 &1631889570
 MonoBehaviour:
   m_ObjectHideFlags: 0

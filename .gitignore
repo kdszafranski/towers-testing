@@ -20,3 +20,5 @@ Temp
 .vscode
 *.userprefs
 obj
+Assets/GroundTexturesPack
+Assets/GroundTexturesPack.meta

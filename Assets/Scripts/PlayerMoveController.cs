@@ -16,18 +16,32 @@ public class PlayerMoveController : MonoBehaviour {
     void FixedUpdate() {
         if(rBody != null) {
             // -1 to 1, used as a multiplier below
-            float vertical = Input.GetAxis("Vertical");
+            //float vertical = Input.GetAxis("Vertical");
             // control max velocity
-            if(rBody.velocity.magnitude < maxVelocity) {
-                // force pushes us forward (whichever direction gameObject is facing)
-                rBody.AddForce(new Vector3(transform.forward.x, 0, transform.forward.z) * 2500f * vertical);    
+
+            // point at and go where we clicked
+            if(Input.GetMouseButton(0)) {
+                // raycast to ground
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit)) {
+                    Debug.Log(hit.transform.name);
+
+                    if (rBody.velocity.magnitude < maxVelocity) {
+                        // face where we clicked
+                        gameObject.transform.LookAt(hit.point);
+
+                        // force pushes us forward (whichever direction gameObject is facing)
+                        rBody.AddForce(new Vector3(transform.forward.x, 0, transform.forward.z) * 2500f);
+                    }
+                }
             }
 
-            float horizontal = Input.GetAxis("Horizontal");
+            //float horizontal = Input.GetAxis("Horizontal");
 
-            // rotate us around the Y (Vector3.up) axis
-            transform.Rotate(0, 2f * horizontal, 0);
-                //new Vector3(transform.rotation.x, transform.rotation.y + 2f * horizontal, transform.rotation.z));
+            //// rotate us around the Y (Vector3.up) axis
+            //transform.Rotate(0, 2f * horizontal, 0);
 
         }
 	}

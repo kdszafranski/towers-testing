@@ -40,6 +40,7 @@ public class PlayerMoveController : MonoBehaviour {
                 }
             }
 
+            // TODO need a better way to check they have arrived at the correct spot and not keep spinning.
             if(currentMoveToLocation != gameObject.transform.position) {
                 Move();
             } else {

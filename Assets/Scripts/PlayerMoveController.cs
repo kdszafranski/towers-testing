@@ -27,7 +27,9 @@ public class PlayerMoveController : MonoBehaviour {
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit)) {
-                    Debug.Log(hit.transform.name);
+                    if(hit.collider.gameObject.name != "Ground") {
+                        Debug.Log("Clicked on: " + hit.collider.gameObject.name);
+                    }
 
                     if (rBody.velocity.magnitude < maxVelocity) {
                         // set this as our current goal position

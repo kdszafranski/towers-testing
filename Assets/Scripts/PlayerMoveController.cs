@@ -49,7 +49,7 @@ public class PlayerMoveController : MonoBehaviour {
 
             // have we arrived at the target location?
             if (HasArrivedAtTargetLocation()) {
-                Debug.Log("Arrived");
+                //Debug.Log("Arrived");
                 // arrived, reset marker
                 if(movementMarker.activeSelf) {
                     ResetMovementMarker();

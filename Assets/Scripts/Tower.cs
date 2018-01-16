@@ -28,7 +28,6 @@ public class Tower : MonoBehaviour {
     }
 
     void Fire() {
-        Debug.Log("Fire!!");
         if(player) {
             // instantiate arrow
             GameObject arrow = Instantiate(arrowPrefab, gameObject.transform.position, Quaternion.identity);
@@ -36,9 +35,7 @@ public class Tower : MonoBehaviour {
 
             Rigidbody rBody = arrow.GetComponent<Rigidbody>();
             if(rBody) {
-                Debug.Log("move!");
                 rBody.AddForce(new Vector3(arrow.transform.forward.x, 0, arrow.transform.forward.z) * 6000f);
-                //rBody.AddForce();
             }
         }
 

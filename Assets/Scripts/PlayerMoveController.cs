@@ -13,7 +13,7 @@ public class PlayerMoveController : MonoBehaviour {
 	void Start () {
         rBody = gameObject.GetComponent<Rigidbody>();
         currentMoveToLocation = gameObject.transform.position;
-        movementMarker.SetActive(false);
+        ResetMovementMarker();
 	}
 
     // Update is called once per frame
@@ -29,25 +29,30 @@ public class PlayerMoveController : MonoBehaviour {
                 if (Physics.Raycast(ray, out hit)) {
                     if(hit.collider.gameObject.name != "Ground") {
                         Debug.Log("Clicked on: " + hit.collider.gameObject.name);
-                    }
+                        GameObject target = hit.collider.gameObject;
+                        // set the target to this GO
+                        currentMoveToLocation = new Vector3(target.transform.position.x, gameObject.transform.position.y, target.transform.position.z);
+                        ResetMovementMarker();
 
-                    if (rBody.velocity.magnitude < maxVelocity) {
-                        // set this as our current goal position
-                        currentMoveToLocation = new Vector3(hit.point.x, gameObject.transform.position.y, hit.point.z);
+                    } else {
+                        if (rBody.velocity.magnitude < maxVelocity) {
+                            // set this as our current goal position
+                            currentMoveToLocation = new Vector3(hit.point.x, gameObject.transform.position.y, hit.point.z);
 
-                        // show visual location marker
-                        movementMarker.transform.position = new Vector3(currentMoveToLocation.x, currentMoveToLocation.y + 5f, currentMoveToLocation.z);
-                        movementMarker.SetActive(true);
+                            // show visual location marker
+                            movementMarker.transform.position = new Vector3(currentMoveToLocation.x, currentMoveToLocation.y + 5f, currentMoveToLocation.z);
+                            movementMarker.SetActive(true);
+                        } // end velocity check
                     }
-                }
+                } // end Raycast 
             } // end mouse down
 
             // have we arrived at the target location?
             if (HasArrivedAtTargetLocation()) {
+                Debug.Log("Arrived");
                 // arrived, reset marker
                 if(movementMarker.activeSelf) {
-                    Debug.Log("Arrived");
-                    movementMarker.SetActive(false);
+                    ResetMovementMarker();
                 }
             } else {
                 // no, keep on movin'
@@ -56,6 +61,10 @@ public class PlayerMoveController : MonoBehaviour {
         
         }
 	}
+
+    void ResetMovementMarker() {
+        movementMarker.SetActive(false);
+    }
 
     bool HasArrivedAtTargetLocation() {
         // get current values of player object and target position
@@ -81,5 +90,10 @@ public class PlayerMoveController : MonoBehaviour {
             rBody.AddForce(new Vector3(transform.forward.x, 0, transform.forward.z) * 2500f);
         }
 
+    }
+
+    public void StopMoving() {
+        // set our target to our current position, which effectively makes us stop
+        currentMoveToLocation = gameObject.transform.position;
     }
 }

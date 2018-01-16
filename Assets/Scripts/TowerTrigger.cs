@@ -9,7 +9,7 @@ public class TowerTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player") {
-            Debug.Log("TowerTrigger in range of player.");
+            //Debug.Log("TowerTrigger in range of player.");
             parentTower.GetComponent<Tower>().StartShooting(other.gameObject);    
         }
 
@@ -17,7 +17,7 @@ public class TowerTrigger : MonoBehaviour {
 
     private void OnTriggerExit(Collider other) {
         if(other.gameObject.tag == "Player") {
-            Debug.Log("TowerTrigger OUT OF RANGE.");
+            //Debug.Log("TowerTrigger OUT OF RANGE.");
             parentTower.GetComponent<Tower>().StopShooting();    
         }
 
